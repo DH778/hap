@@ -7,15 +7,8 @@
  --------------------------------->
 
 <template>
-  <n-dropdown
-    :show="show"
-    :options="options"
-    :x="x"
-    :y="y"
-    placement="bottom-start"
-    @clickoutside="handleHideDropdown"
-    @select="handleSelect"
-  />
+  <n-dropdown :show="show" :options="options" :x="x" :y="y" placement="bottom-start" @clickoutside="handleHideDropdown"
+    @select="handleSelect" />
 </template>
 
 <script setup>

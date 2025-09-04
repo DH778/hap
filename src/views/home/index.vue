@@ -7,9 +7,12 @@
  --------------------------------->
 
 <template>
+  <!-- 应用页面容器，显示页脚 -->
   <AppPage show-footer>
     <div class="flex">
+      <!-- 左侧用户信息卡片 -->
       <n-card class="min-w-200 w-30%">
+        <!-- 用户头像和基本信息 -->
         <div class="flex items-center">
           <n-avatar round :size="60" :src="userStore.avatar" class="flex-shrink-0" />
           <div class="ml-20 flex-col">
@@ -27,7 +30,9 @@
           —— 查尔斯·史考伯
         </p>
       </n-card>
+      <!-- 右侧欢迎信息卡片 -->
       <n-card class="ml-12 w-70%" title="✨ 欢迎使用 Vue Naive Admin 2.0">
+        <!-- 卡片头部额外内容：官网链接 -->
         <template #header-extra>
           <a
             class="text-highlight text-14 text-primary hover:underline hover:opacity-80"
@@ -159,40 +164,52 @@
 </template>
 
 <script setup>
+// 导入ECharts图表组件
 import { BarChart, LineChart, PieChart } from 'echarts/charts'
+// 导入ECharts基础组件
 import { GridComponent, LegendComponent, TooltipComponent } from 'echarts/components'
+// 导入ECharts核心
 import * as echarts from 'echarts/core'
+// 导入ECharts过渡动画功能
 import { UniversalTransition } from 'echarts/features'
+// 导入ECharts Canvas渲染器
 import { CanvasRenderer } from 'echarts/renderers'
+// 导入Vue ECharts组件
 import VChart from 'vue-echarts'
+// 导入用户状态管理
 import { useUserStore } from '@/store'
 
+// 获取用户状态管理实例
 const userStore = useUserStore()
 
+// 注册ECharts组件和功能
 echarts.use([
-  TooltipComponent,
-  GridComponent,
-  LegendComponent,
-  BarChart,
-  LineChart,
-  CanvasRenderer,
-  UniversalTransition,
-  PieChart,
+  TooltipComponent,    // 提示框组件
+  GridComponent,       // 网格组件
+  LegendComponent,     // 图例组件
+  BarChart,           // 柱状图
+  LineChart,          // 折线图
+  CanvasRenderer,     // Canvas渲染器
+  UniversalTransition, // 通用过渡动画
+  PieChart,           // 饼图
 ])
 
+// 趋势图表配置选项
 const trendOption = {
+  // 提示框配置
   tooltip: {
-    trigger: 'axis',
+    trigger: 'axis',        // 坐标轴触发
     axisPointer: {
-      type: 'cross',
+      type: 'cross',        // 十字准星指示器
       crossStyle: {
         color: '#999',
       },
     },
   },
+  // 图例配置
   legend: {
     top: '5%',
-    data: ['star', 'fork'],
+    data: ['star', 'fork'], // 图例数据
   },
   xAxis: [
     {
@@ -238,26 +255,30 @@ const trendOption = {
   ],
 }
 
+// 技能分布饼图配置选项
 const skillOption = {
+  // 提示框配置
   tooltip: {
-    trigger: 'item',
+    trigger: 'item',       // 数据项触发
     formatter({ name, value }) {
-      return `${name} ${value}%`
+      return `${name} ${value}%`  // 自定义提示框格式
     },
   },
+  // 图例配置
   legend: {
-    left: 'center',
+    left: 'center',        // 图例居中显示
   },
+  // 系列配置
   series: [
     {
       top: '12%',
-      type: 'pie',
-      radius: ['35%', '90%'],
-      avoidLabelOverlap: true,
+      type: 'pie',         // 饼图类型
+      radius: ['35%', '90%'], // 内外半径，形成环形图
+      avoidLabelOverlap: true, // 避免标签重叠
       itemStyle: {
-        borderRadius: 10,
-        borderColor: '#fff',
-        borderWidth: 2,
+        borderRadius: 10,   // 扇形圆角
+        borderColor: '#fff', // 边框颜色
+        borderWidth: 2,     // 边框宽度
       },
       label: {
         show: false,

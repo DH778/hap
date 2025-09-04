@@ -72,6 +72,16 @@ export const basePermissions = [
         enable: true,
         show: true,
       },
+      {
+        code: 'Baidu',
+        name: '百度',
+        type: 'MENU',
+        path: 'https://www.baidu.com',
+        icon: 'i-simple-icons:juejin',
+        order: 4,
+        enable: true,
+        show: true,
+      },
     ],
   },
 ]

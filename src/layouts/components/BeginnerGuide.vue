@@ -1,26 +1,21 @@
 <template>
   <n-tooltip trigger="hover">
     <template #trigger>
-      <i
-        class="i-fe:beginner mr-16 cursor-pointer text-20"
-        @click="show = true"
-      />
+      <i class="i-fe:beginner mr-16 cursor-pointer text-20" @click="show = true" />
     </template>
     操作指引
   </n-tooltip>
 
-  <Vue3IntroStep
-    ref="myIntroStep"
-    v-model:show="show"
-    :config="config"
-  >
+  <Vue3IntroStep ref="myIntroStep" v-model:show="show" :config="config">
     <template #prev="{ tipItem, index }">
-      <NButton class="mr-12" type="primary" color="#fff" text-color="#fff" ghost round size="small" @click="prev(tipItem, index)">
+      <NButton class="mr-12" type="primary" color="#fff" text-color="#fff" ghost round size="small"
+        @click="prev(tipItem, index)">
         上一步
       </NButton>
     </template>
     <template #next="{ tipItem }">
-      <NButton class="mr-12" type="primary" color="#fff" text-color="#fff" ghost round size="small" @click="next(tipItem)">
+      <NButton class="mr-12" type="primary" color="#fff" text-color="#fff" ghost round size="small"
+        @click="next(tipItem)">
         下一步
       </NButton>
     </template>

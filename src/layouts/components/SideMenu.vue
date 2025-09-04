@@ -29,12 +29,17 @@ const router = useRouter()
 const route = useRoute()
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
+console.log(permissionStore.menus);
+
 
 const activeKey = computed(() => route.meta?.parentKey || route.name)
 
 const menu = ref(null)
 watch(route, async () => {
+
+  
   await nextTick()
+  console.log("route change",menu.value?.showOption())
   menu.value?.showOption()
 })
 
